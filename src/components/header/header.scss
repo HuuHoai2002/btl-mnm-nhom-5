@@ -1,92 +1,106 @@
-@use "../../scss/" as *;
-
-.logo {
-    font-size: 2.5rem;
-    font-weight: 600;
-
-    @include flex(center, unset);
-
-    img {
-        margin-right: 10px;
-        width: 50px;
-
-        @include mobile {
-            width: 30px;
-            margin-right: 0;
-        }
-    }
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0%;
+  z-index: 100;
+  background-color: #0f0f0f;
+  border: 1px solid #1f1f1f;
+}
+.header-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 70px;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.header-logo {
+  height: 50px;
+}
+.header-list {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 5px 12px;
+}
+.header-item {
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  opacity: 0.5;
+}
+.header-item.active {
+  color: #fff;
+  opacity: 1;
+}
+.header-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+}
+.header-users {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  cursor: pointer;
+}
+.user-avatar {
+  width: 35px;
+  height: 35px;
+}
+.user-avatar > img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.user-name {
+  font-size: 15px;
+  font-weight: 600;
 }
 
-.header {
-    height: $header-height;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 99;
-    transition: height 0.3s ease, background-color 0.3s ease;
+// header info
 
-    &.shrink {
-        height: $header-shrink-height;
-        background-color: $body-bg;
-    }
+.header-info {
+  min-width: 220px;
+  background-color: #1f1f1f;
+}
 
-    &__wrap {
-        @include flex(center, space-between);
-        height: 100%;
-        padding: 0 2rem;
+.users {
+  padding: 15px;
+  border-bottom: 1px solid #0f0f0f;
+}
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
 
-        @include mobile {
-            justify-content: center;
-        }
-    }
+.user-info > img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 
-    &__nav {
-        @include flex(center, unset);
-
-        & > * ~ * {
-            margin-left: 2rem;
-        }
-
-        li {
-            padding: 5px 0;
-            font-weight: 700;
-            position: relative;
-            font-size: 1.5rem;
-
-            &::after {
-                content: "";
-                position: absolute;
-                bottom: 0;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 0;
-                transition: width 0.5s ease;
-                height: 2px;
-                background-color: $main-color;
-            }
-
-            &.active::after,
-            &:hover::after {
-                width: 100%;
-            }
-        }
-
-        @include mobile {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            height: 5rem;
-            width: 100%;
-            background-color: $body-bg;
-            padding: 0 2rem;
-            box-shadow: $box-shadow;
-
-            @include flex(center, space-between);
-
-            & > * ~ * {
-                margin-left: 0;
-            }
-        }
-    }
+.header-content-item {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: #eee;
+  font-weight: 500;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.header-content-item:hover {
+  background-color: #2f2f2f;
 }
