@@ -27,11 +27,13 @@ const Login = () => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     try {
+      // Dòng này dùng firebase để đăng nhập
       await signInWithEmailAndPassword(
         auth,
         data.get("email"),
         data.get("password")
       );
+      toast.success("Đăng nhập thành công", { pauseOnHover: false });
       history.push("/");
     } catch (error) {
       toast.error("Tài khoản hoặc mật khẩu không chính xác", {
@@ -39,9 +41,10 @@ const Login = () => {
       });
     }
   };
+
   return (
     <ThemeProvider theme={darkTheme}>
-      <div className="container">
+      <div className="container" style={{ minHeight: "100vh" }}>
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           <Box

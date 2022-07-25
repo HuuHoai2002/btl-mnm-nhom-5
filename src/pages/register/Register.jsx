@@ -35,9 +35,10 @@ const Register = () => {
         data.get("email"),
         data.get("password")
       );
-      updateProfile(auth.currentUser, {
+      await updateProfile(auth.currentUser, {
         displayName: data.get("fullname"),
       });
+      toast.success("Đăng ký thành công", { pauseOnHover: false });
       history.push("/");
     } catch (error) {
       toast.error("Email đã được sử dụng", { pauseOnHover: false });
@@ -46,7 +47,7 @@ const Register = () => {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <div className="container">
+      <div className="container" style={{ minHeight: "100vh" }}>
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           <Box
