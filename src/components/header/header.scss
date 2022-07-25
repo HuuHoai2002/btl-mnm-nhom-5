@@ -34,9 +34,10 @@
   color: white;
   opacity: 0.5;
 }
-.header-item.active {
-  color: #fff;
-  opacity: 1;
+.header-item-active {
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
 }
 .header-left {
   display: flex;

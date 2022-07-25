@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { OutlineButton } from "../components/button/Button";
@@ -8,6 +8,9 @@ import MovieList from "../components/movie-list/MovieList";
 import { category, movieType, tvType } from "../api/tmdbApi";
 
 const Home = () => {
+  useEffect(() => {
+    document.title = "Trang chủ | Galaxy Play";
+  }, []);
   return (
     <>
       <HeroSlide />
