@@ -71,7 +71,15 @@ const Detail = () => {
                 <CastList id={item.id} />
               </div>
               <Button
-                onClick={() => history.push(`/${category}/watch?id=${id}`)}
+                onClick={() =>
+                  history.push(
+                    `/${
+                      category === "movie"
+                        ? `${category}/watch?id=${id}`
+                        : `${category}/watch?id=${id}&episode=1`
+                    }`
+                  )
+                }
               >
                 Xem ngay
               </Button>

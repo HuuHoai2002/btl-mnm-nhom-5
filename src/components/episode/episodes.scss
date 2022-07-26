@@ -1,0 +1,33 @@
+@use "../../scss" as *;
+
+.episodes {
+  padding: 10px;
+
+  .list-episodes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+
+    .episode {
+      height: 40px;
+      font-size: 16px;
+      border-radius: 5px;
+      background-color: #2f3e46;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 500;
+      color: #fff;
+      opacity: 0.25;
+      transition: all 0.25s;
+      cursor: pointer;
+
+      &:not(.active):hover {
+        opacity: 0.8;
+      }
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+}

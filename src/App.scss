@@ -19,6 +19,20 @@ html {
   @include mobile {
     font-size: 60%;
   }
+
+}
+
+html::-webkit-scrollbar {
+  width: 8px;
+}
+
+html::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: #2f2f2f;
+  border-radius: 8px;
 }
 
 body {
