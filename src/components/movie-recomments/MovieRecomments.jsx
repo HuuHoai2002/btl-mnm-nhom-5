@@ -19,7 +19,6 @@ const MovieRecomments = ({ category, id }) => {
     getData();
   }, [category, id]);
 
-  console.log(movie);
   return (
     <div className="recommendations">
       {movie &&
@@ -42,7 +41,7 @@ const MovieRecomments = ({ category, id }) => {
                 <div className="wrapper">
                   <span className="release">
                     {new Date(
-                      item.release_date || item.first_air_date
+                      item.release_date || item.first_air_date || new Date()
                     ).getFullYear()}
                   </span>
                   <span className="vote">

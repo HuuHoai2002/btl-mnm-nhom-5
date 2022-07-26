@@ -44,7 +44,6 @@ const Home = () => {
           </div>
           <MovieList category={category.tv} type={tvType.popular} />
         </div>
-
         <div className="section">
           <div className="section__header">
             <h2>Top Rated TV</h2>

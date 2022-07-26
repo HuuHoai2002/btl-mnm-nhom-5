@@ -1,0 +1,123 @@
+.comments-title {
+  padding: 20px 0;
+}
+
+.comments {
+  width: 100%;
+  padding: 30px;
+  background-color: #181a23;
+
+  &-wrapper {
+    max-width: 974px;
+    .comments-info {
+      .comments-total {
+        font-size: 14px;
+        color: white;
+        opacity: 0.5;
+        margin-bottom: 30px;
+      }
+
+      .comments-post {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        margin-bottom: 30px;
+        .user {
+          width: 40px;
+          height: 40px;
+        }
+        .user > img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+
+        .comments-input {
+          flex: 1;
+          position: relative;
+
+          input {
+            width: 100%;
+            border: none;
+            outline: none;
+            background-color: #1f1f1f;
+            font-size: 14px;
+            padding: 15px 40px 15px 20px;
+
+            &::placeholder {
+              color: white;
+              opacity: 0.5;
+            }
+          }
+        }
+
+        .send-icon {
+          position: absolute;
+          top: 50%;
+          right: 15px;
+          transform: translate(0, -50%);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          transition: all 0.25s;
+
+          &:hover {
+            color: #2cccff;
+          }
+        }
+      }
+    }
+
+    .list-comments {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      .comment {
+        &-wrapper {
+          display: flex;
+          align-items: flex-start;
+          gap: 30px;
+
+          .user {
+            width: 40px;
+            height: 40px;
+          }
+          .user img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+          }
+        }
+
+        &-content {
+          flex: 1;
+
+          .author {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 8px;
+            .name {
+              font-size: 15px;
+              font-weight: 500;
+              opacity: 0.9;
+            }
+
+            .date {
+              font-size: 12px;
+              color: #8f8f8f;
+            }
+          }
+        }
+
+        p {
+          font-size: 14px;
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+}

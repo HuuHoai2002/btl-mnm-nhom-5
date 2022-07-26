@@ -1,5 +1,6 @@
 import { signOut } from "firebase/auth";
 import React from "react";
+import Swal from "sweetalert2";
 import { auth } from "../../firebase/firebase-config";
 import LogoutIcon from "../icon/LogoutIcon";
 import UserIcon from "../icon/UserIcon";
@@ -7,7 +8,20 @@ import "./header.scss";
 
 const HeaderInfo = ({ displayName }) => {
   const handleSignout = async () => {
-    await signOut(auth);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You will be signed out",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ok, sign me out!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await signOut(auth);
+        Swal.fire("Sign out successfully", "success");
+      }
+    });
   };
   return (
     <div className="header-info">

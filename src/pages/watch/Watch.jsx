@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import apiConfig from "../../api/apiConfig";
 import tmdbApi from "../../api/tmdbApi";
+import Comments from "../../components/comments/Comments";
 import Episodes from "../../components/episode/Episodes";
 import MovieList from "../../components/movie-list/MovieList";
 import MovieRecomments from "../../components/movie-recomments/MovieRecomments";
@@ -9,11 +10,11 @@ import useUrlSearchParams from "../../hooks/useUrlSearchParams";
 import "./watch.scss";
 
 const Watch = () => {
-  const [movie, setMovie] = React.useState(null);
-
   const { category } = useParams();
   const id = useUrlSearchParams("id");
   const episode = useUrlSearchParams("episode");
+
+  const [movie, setMovie] = React.useState(null);
 
   let frame_url = apiConfig.frameUrl(category, id);
   if (category !== "movie") {
@@ -42,10 +43,10 @@ const Watch = () => {
         <div className="watch-frame">
           <iframe
             title="movie-frame"
-            src={frame_url}
+            // src={frame_url}
             width="100%"
             height="100%"
-            allowFullscreen="allowfullscreen"
+            allowFullScreen="allowfullscreen"
             frameBorder="0"
           ></iframe>
         </div>
@@ -67,6 +68,9 @@ const Watch = () => {
             </div>
           </div>
         )}
+      </div>
+      <div>
+        <Comments category={category} id={id} />
       </div>
       <div className="section" style={{ marginTop: "30px" }}>
         <div className="section__header">
