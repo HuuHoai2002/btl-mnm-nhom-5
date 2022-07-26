@@ -24,7 +24,7 @@ const MovieRecomments = ({ category, id }) => {
     <div className="recommendations">
       {movie &&
         movie.map((item) => (
-          <div className="movie-card-re">
+          <div className="movie-card-re" key={item.id}>
             <div className="wrapper">
               <div className="image">
                 <img
