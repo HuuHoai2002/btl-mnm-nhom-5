@@ -7,13 +7,12 @@ import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Grid from "@mui/material/Grid";
-import Link from "@mui/material/Link";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import { auth } from "../../firebase/firebase-config";
 
@@ -122,9 +121,7 @@ const Register = () => {
               </Button>
               <Grid container justifyContent="flex-end">
                 <Grid item>
-                  <Link href="/login" variant="body2">
-                    Bạn đã có tài khoản? Đăng nhập
-                  </Link>
+                  <Link to="/login">Bạn đã có tài khoản? Đăng nhập</Link>
                 </Grid>
               </Grid>
             </Box>

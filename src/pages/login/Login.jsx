@@ -5,14 +5,13 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
-import Link from "@mui/material/Link";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React from "react";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import GoogleIcon from "../../components/icon/GoogleIcon";
 import { auth } from "../../firebase/firebase-config";
@@ -78,8 +77,8 @@ const Login = () => {
               <Grid container spacing={4}>
                 <Grid item xs={12}>
                   <TextField
-                    required
-                    fullWidth
+                    required={true}
+                    fullWidth={true}
                     id="email"
                     label="Địa chỉ email"
                     name="email"
@@ -88,8 +87,8 @@ const Login = () => {
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
-                    required
-                    fullWidth
+                    required={true}
+                    fullWidth={true}
                     name="password"
                     label="Mật khẩu"
                     type="password"
@@ -118,9 +117,7 @@ const Login = () => {
               </Button>
               <Grid container justifyContent="flex-end">
                 <Grid item>
-                  <Link href="/register" variant="body2">
-                    Bạn chưa có tài khoản? Đăng ký
-                  </Link>
+                  <Link to="/register">Bạn chưa có tài khoản? Đăng ký</Link>
                 </Grid>
               </Grid>
             </Box>

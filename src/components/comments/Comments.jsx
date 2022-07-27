@@ -1,6 +1,7 @@
 import {
   addDoc,
   collection,
+  limit,
   onSnapshot,
   query,
   where,
@@ -24,8 +25,9 @@ const Comments = ({ category, id }) => {
     const q = query(
       commentsRef,
       where("movie_type", "==", category),
-      where("movie_id", "==", id)
+      where("movie_id", "==", id, limit(5))
     );
+
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const data = snapshot.docs.map((doc) => doc.data());
       if (data) {
@@ -70,7 +72,11 @@ const Comments = ({ category, id }) => {
           ) : (
             <div className="logger">
               <span>
-                Vui lòng <Link to="/login" className="link">đăng nhập</Link> để bình luận
+                Vui lòng{" "}
+                <Link to="/login" className="link">
+                  đăng nhập
+                </Link>{" "}
+                để bình luận
               </span>
             </div>
           )}

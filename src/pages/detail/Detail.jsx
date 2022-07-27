@@ -66,6 +66,7 @@ const Detail = () => {
               <p className="overview">{item.overview}</p>
               <div className="cast">
                 <div className="section__header">
+                  {/* việt hoá chỗ này */}
                   <h2>Casts</h2>
                 </div>
                 <CastList id={item.id} />
@@ -91,6 +92,7 @@ const Detail = () => {
             </div>
             <div className="section mb-3">
               <div className="section__header mb-2">
+                {/* việt hoá chỗ này */}
                 <h2>Similar</h2>
               </div>
               <MovieList category={category} type="similar" id={item.id} />

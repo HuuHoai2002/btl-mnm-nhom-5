@@ -17,8 +17,10 @@ const Home = () => {
       <div className="container">
         <div className="section">
           <div className="section__header">
+            {/* việt hoá chỗ này */}
             <h2>Trending Movies</h2>
             <Link to="/movie">
+              {/* việt hoá chỗ này */}
               <OutlineButton className="small">View more</OutlineButton>
             </Link>
           </div>
@@ -27,8 +29,10 @@ const Home = () => {
 
         <div className="section">
           <div className="section__header">
+            {/* việt hoá chỗ này */}
             <h2>Top Rated Movies</h2>
             <Link to="/movie">
+              {/* việt hoá chỗ này */}
               <OutlineButton className="small">View more</OutlineButton>
             </Link>
           </div>
@@ -37,8 +41,10 @@ const Home = () => {
 
         <div className="section">
           <div className="section__header">
+            {/* việt hoá chỗ này */}
             <h2>Trending TV</h2>
             <Link to="/tv">
+              {/* việt hoá chỗ này */}
               <OutlineButton className="small">View more</OutlineButton>
             </Link>
           </div>
@@ -46,8 +52,10 @@ const Home = () => {
         </div>
         <div className="section">
           <div className="section__header">
+            {/* việt hoá chỗ này */}
             <h2>Top Rated TV</h2>
             <Link to="/tv">
+              {/* việt hoá chỗ này */}
               <OutlineButton className="small">View more</OutlineButton>
             </Link>
           </div>
