@@ -69,6 +69,20 @@
       }
     }
 
+    .logger {
+      margin-bottom: 20px;
+      span {
+        font-size: 14px;
+        font-weight: 500;
+        color: white;
+        opacity: 0.8;
+
+        .link {
+          color: #6a5af9;
+          transition: all 0.25s;
+        }
+      }
+    }
     .list-comments {
       width: 100%;
       display: flex;

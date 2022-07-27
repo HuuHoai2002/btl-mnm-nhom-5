@@ -11,6 +11,7 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React from "react";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import { auth } from "../../firebase/firebase-config";
@@ -23,6 +24,7 @@ const darkTheme = createTheme({
 
 const Login = () => {
   const history = useHistory();
+  const [signInWithGoogle] = useSignInWithGoogle(auth);
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -39,6 +41,15 @@ const Login = () => {
       toast.error("Tài khoản hoặc mật khẩu không chính xác", {
         pauseOnHover: false,
       });
+    }
+  };
+
+  const handleLoginWithGoogle = async () => {
+    try {
+      await signInWithGoogle();
+      history.push("/");
+    } catch (error) {
+      toast.error("Đăng nhập thất bại", { pauseOnHover: false });
     }
   };
 
@@ -90,6 +101,15 @@ const Login = () => {
                   />
                 </Grid>
               </Grid>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 4 }}
+                onClick={handleLoginWithGoogle}
+              >
+                Đăng nhập bằng google
+              </Button>
               <Button
                 type="submit"
                 fullWidth

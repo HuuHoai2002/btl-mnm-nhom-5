@@ -30,6 +30,7 @@ const headerContent = [
 const Header = () => {
   const [user] = useAuthState(auth);
   const { pathname } = useLocation();
+  console.log(user);
 
   return (
     <div className="header">
@@ -63,12 +64,15 @@ const Header = () => {
             animation="scale"
             interactive={true}
             placement="bottom-start"
-            content={<HeaderInfo displayName={user.displayName} />}
+            content={<HeaderInfo user={user} />}
           >
             <div className="header-users">
               <div className="user-avatar">
                 <img
-                  src="https://cdn.dribbble.com/users/2400293/screenshots/18034200/media/7c9ad36bd345b48cdb1a1db87ba5d096.png?compress=1&resize=768x576&vertical=top"
+                  src={
+                    user.photoURL ||
+                    "https://cdn.dribbble.com/users/2400293/screenshots/18034200/media/7c9ad36bd345b48cdb1a1db87ba5d096.png?compress=1&resize=768x576&vertical=top"
+                  }
                   alt=""
                 />
               </div>

@@ -6,14 +6,16 @@ import {
   where,
 } from "firebase/firestore";
 import React, { useEffect } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Link } from "react-router-dom";
 import { auth, db } from "../../firebase/firebase-config";
-import SendIcon from "../icon/SendIcon";
 import Comment from "./Comment";
+import CommentsInfo from "./CommentsInfo";
 import "./index.scss";
 
 const Comments = ({ category, id }) => {
   const [comments, setComments] = React.useState([]);
-
+  const [user] = useAuthState(auth);
   const [value, setValue] = React.useState("");
 
   // get comments
@@ -58,31 +60,20 @@ const Comments = ({ category, id }) => {
       <h3 className="comments-title">Bình luận</h3>
       <div className="comments">
         <div className="comments-wrapper">
-          <div className="comments-info">
-            <div className="comments-total">{comments?.length} bình luận</div>
-            <div className="comments-post">
-              <div className="user">
-                <img
-                  src={
-                    auth?.currentUser?.photoURL ||
-                    "https://i.stack.imgur.com/l60Hf.png"
-                  }
-                  alt=""
-                />
-              </div>
-              <div className="comments-input">
-                <input
-                  type="text"
-                  placeholder="Viết bình luận ...."
-                  value={value}
-                  onChange={(e) => setValue(e.target.value)}
-                />
-                <div className="send-icon" onClick={handleSendComments}>
-                  <SendIcon />
-                </div>
-              </div>
+          {user ? (
+            <CommentsInfo
+              comments={comments}
+              onClick={handleSendComments}
+              value={value}
+              setValue={setValue}
+            />
+          ) : (
+            <div className="logger">
+              <span>
+                Vui lòng <Link to="/login" className="link">đăng nhập</Link> để bình luận
+              </span>
             </div>
-          </div>
+          )}
 
           <div className="list-comments">
             {comments.length > 0 ? (
