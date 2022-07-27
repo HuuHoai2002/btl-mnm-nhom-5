@@ -102,7 +102,7 @@ const Login = () => {
                 </Grid>
               </Grid>
               <Button
-                type="submit"
+                type="button"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 4 }}
