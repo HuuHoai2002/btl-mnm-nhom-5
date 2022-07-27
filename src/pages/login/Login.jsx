@@ -45,12 +45,8 @@ const Login = () => {
   };
 
   const handleLoginWithGoogle = async () => {
-    try {
       await signInWithGoogle();
       history.push("/");
-    } catch (error) {
-      toast.error("Đăng nhập thất bại", { pauseOnHover: false });
-    }
   };
 
   return (
