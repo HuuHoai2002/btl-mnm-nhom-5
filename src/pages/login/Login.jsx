@@ -46,12 +46,8 @@ const Login = () => {
   };
 
   const handleLoginWithGoogle = async () => {
-    try {
-      await signInWithGoogle();
-      history.push("/");
-    } catch (error) {
-      toast.error("Đăng nhập thất bại", { pauseOnHover: false });
-    }
+    await signInWithGoogle();
+    history.push("/");
   };
 
   return (
@@ -103,6 +99,7 @@ const Login = () => {
                 </Grid>
               </Grid>
               <Button
+                type="button"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 4 }}
