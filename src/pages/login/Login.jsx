@@ -14,6 +14,7 @@ import React from "react";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
+import GoogleIcon from "../../components/icon/GoogleIcon";
 import { auth } from "../../firebase/firebase-config";
 
 const darkTheme = createTheme({
@@ -102,10 +103,10 @@ const Login = () => {
                 </Grid>
               </Grid>
               <Button
-                type="submit"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 4 }}
+                startIcon={<GoogleIcon />}
                 onClick={handleLoginWithGoogle}
               >
                 Đăng nhập bằng google
