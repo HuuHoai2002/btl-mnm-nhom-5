@@ -25,22 +25,36 @@ const darkTheme = createTheme({
 const Login = () => {
   const history = useHistory();
   const [signInWithGoogle] = useSignInWithGoogle(auth);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    try {
-      // Dòng này dùng firebase để đăng nhập
-      await signInWithEmailAndPassword(
-        auth,
-        data.get("email"),
-        data.get("password")
-      );
-      toast.success("Đăng nhập thành công", { pauseOnHover: false });
-      history.push("/");
-    } catch (error) {
-      toast.error("Tài khoản hoặc mật khẩu không chính xác", {
+    const email = data.get("email");
+    const password = data.get("password");
+
+    const regexEmail =
+      /^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/;
+
+    if (email.trim() === "" || password.trim() === "") {
+      toast.error("Không được để trống", {
         pauseOnHover: false,
       });
+      return;
+    } else if (!regexEmail.test(email)) {
+      toast.error("Email không hợp lệ", {
+        pauseOnHover: false,
+      });
+      return;
+    } else {
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        toast.success("Đăng nhập thành công", { pauseOnHover: false });
+        history.push("/");
+      } catch (error) {
+        toast.error("Tài khoản hoặc mật khẩu không chính xác", {
+          pauseOnHover: false,
+        });
+      }
     }
   };
 

@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import SwiperCore, { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import Button, { OutlineButton } from "../button/Button";
+import Button from "../button/Button";
 import Modal, { ModalContent } from "../modal/Modal";
 
 import apiConfig from "../../api/apiConfig";
@@ -100,9 +100,6 @@ const HeroSlideItem = (props) => {
             <Button onClick={() => history.push("/movie/watch?id=" + item.id)}>
               Xem ngay
             </Button>
-            <OutlineButton onClick={setModalActive}>
-              Watch trailer
-            </OutlineButton>
           </div>
         </div>
         <div className="hero-slide__item__content__poster">

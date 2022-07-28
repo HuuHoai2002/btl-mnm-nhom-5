@@ -16,8 +16,7 @@ const Catalog = () => {
   return (
     <>
       <PageHeader>
-        {/* việt hoá chỗ này */}
-        {category === cate.movie ? "Movies" : "TV Series"}
+        {category === cate.movie ? "Phim Chiếu Rạp" : "Phim Bộ"}
       </PageHeader>
       <div className="container">
         <div className="section mb-3">

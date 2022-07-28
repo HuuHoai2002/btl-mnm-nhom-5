@@ -23,25 +23,55 @@ const darkTheme = createTheme({
 });
 
 const Register = () => {
+  const [check, setCheck] = React.useState(false);
   const history = useHistory();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    try {
-      await createUserWithEmailAndPassword(
-        auth,
-        data.get("email"),
-        data.get("password")
-      );
-      await updateProfile(auth.currentUser, {
-        displayName: data.get("fullname"),
+
+    const name = data.get("fullname");
+    const email = data.get("email");
+    const password = data.get("password");
+
+    const regexEmail =
+      /^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/;
+
+    if (email.trim() === "" || password.trim() === "" || name.trim() === "") {
+      toast.error("Không được để trống", {
+        pauseOnHover: false,
       });
-      toast.success("Đăng ký thành công", { pauseOnHover: false });
-      history.push("/");
-    } catch (error) {
-      toast.error("Email đã được sử dụng", { pauseOnHover: false });
+      return;
+    } else if (!regexEmail.test(email)) {
+      toast.error("Email không hợp lệ", {
+        pauseOnHover: false,
+      });
+      return;
+    } else if (name.toString().length > 20) {
+      toast.error("Tên không được vượt quá 20 ký tự", {
+        pauseOnHover: false,
+      });
+      return;
+    } else {
+      if (check) {
+        try {
+          await createUserWithEmailAndPassword(auth, email, password);
+          await updateProfile(auth.currentUser, {
+            displayName: name,
+          });
+          toast.success("Đăng ký thành công", { pauseOnHover: false });
+          history.push("/");
+        } catch (error) {
+          toast.error("Email đã được sử dụng", { pauseOnHover: false });
+        }
+      } else {
+        toast.error("Vui lòng đồng ý với điều khoản", { pauseOnHover: false });
+      }
     }
+  };
+
+  const handleClick = () => {
+    setCheck(!check);
   };
 
   return (
@@ -105,7 +135,11 @@ const Register = () => {
                 <Grid item xs={12}>
                   <FormControlLabel
                     control={
-                      <Checkbox value="allowExtraEmails" color="primary" />
+                      <Checkbox
+                        value="allowExtraEmails"
+                        color="primary"
+                        onClick={handleClick}
+                      />
                     }
                     label="Tôi đồng ý các điều khoản và dịch vụ"
                   />

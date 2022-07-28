@@ -1,7 +1,6 @@
 import {
   addDoc,
   collection,
-  limit,
   onSnapshot,
   query,
   where,
@@ -9,6 +8,7 @@ import {
 import React, { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { auth, db } from "../../firebase/firebase-config";
 import Comment from "./Comment";
 import CommentsInfo from "./CommentsInfo";
@@ -25,7 +25,7 @@ const Comments = ({ category, id }) => {
     const q = query(
       commentsRef,
       where("movie_type", "==", category),
-      where("movie_id", "==", id, limit(5))
+      where("movie_id", "==", id)
     );
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
@@ -42,6 +42,9 @@ const Comments = ({ category, id }) => {
 
   const handleSendComments = async () => {
     if (value.trim() === "") {
+      toast.error("Bình luận không được để trống", {
+        pauseOnHover: false,
+      });
       return;
     } else {
       const commentsRef = collection(db, "comments");

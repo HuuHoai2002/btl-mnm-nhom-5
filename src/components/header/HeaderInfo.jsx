@@ -8,6 +8,7 @@ import "./header.scss";
 
 const HeaderInfo = ({ user }) => {
   const { photoURL, displayName } = user;
+
   const handleSignout = async () => {
     Swal.fire({
       title: "Are you sure?",
@@ -24,6 +25,7 @@ const HeaderInfo = ({ user }) => {
       }
     });
   };
+  
   return (
     <div className="header-info">
       <div className="users">

@@ -17,11 +17,9 @@ const Home = () => {
       <div className="container">
         <div className="section">
           <div className="section__header">
-            {/* việt hoá chỗ này */}
-            <h2>Trending Movies</h2>
+            <h2>Phim Chiếu Rạp Phổ Biến</h2>
             <Link to="/movie">
-              {/* việt hoá chỗ này */}
-              <OutlineButton className="small">View more</OutlineButton>
+              <OutlineButton className="small">Xem thêm</OutlineButton>
             </Link>
           </div>
           <MovieList category={category.movie} type={movieType.popular} />
@@ -29,11 +27,9 @@ const Home = () => {
 
         <div className="section">
           <div className="section__header">
-            {/* việt hoá chỗ này */}
-            <h2>Top Rated Movies</h2>
+            <h2>Phim Chiếu Rạp Có Đánh Giá Cao</h2>
             <Link to="/movie">
-              {/* việt hoá chỗ này */}
-              <OutlineButton className="small">View more</OutlineButton>
+              <OutlineButton className="small">Xem thêm</OutlineButton>
             </Link>
           </div>
           <MovieList category={category.movie} type={movieType.top_rated} />
@@ -41,22 +37,18 @@ const Home = () => {
 
         <div className="section">
           <div className="section__header">
-            {/* việt hoá chỗ này */}
-            <h2>Trending TV</h2>
+            <h2>Phim Bộ Phổ Biến</h2>
             <Link to="/tv">
-              {/* việt hoá chỗ này */}
-              <OutlineButton className="small">View more</OutlineButton>
+              <OutlineButton className="small">Xem thêm</OutlineButton>
             </Link>
           </div>
           <MovieList category={category.tv} type={tvType.popular} />
         </div>
         <div className="section">
           <div className="section__header">
-            {/* việt hoá chỗ này */}
-            <h2>Top Rated TV</h2>
+            <h2>Phim Bộ Có Đánh Giá Cao</h2>
             <Link to="/tv">
-              {/* việt hoá chỗ này */}
-              <OutlineButton className="small">View more</OutlineButton>
+              <OutlineButton className="small">Xem thêm</OutlineButton>
             </Link>
           </div>
           <MovieList category={category.tv} type={tvType.top_rated} />
