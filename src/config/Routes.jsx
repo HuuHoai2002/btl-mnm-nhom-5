@@ -21,7 +21,7 @@ const Routes = () => {
         <Route path="/:category/search/:keyword" component={Catalog} />
         <Route path="/:category/:id" component={Detail} />
         <Route path="/:category" component={Catalog} />
-        <Route path="/" component={Home} />
+        <Route path="/" exact component={Home} />
       </Switch>
     </>
   );

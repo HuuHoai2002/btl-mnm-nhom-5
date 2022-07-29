@@ -15,11 +15,11 @@ import Routes from "./config/Routes";
 function App() {
   const [showPopup, setShowPopup] = useState(false);
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setShowPopup(true);
-  //   }, 1000);
-  // }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      setShowPopup(true);
+    }, 1000);
+  }, []);
 
   return (
     <BrowserRouter>
