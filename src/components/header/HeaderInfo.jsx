@@ -11,21 +11,22 @@ const HeaderInfo = ({ user }) => {
 
   const handleSignout = async () => {
     Swal.fire({
-      title: "Are you sure?",
-      text: "You will be signed out",
+      title: "Bạn có chắc chắn không?",
+      text: "Tài khoản của bạn sẽ bị đăng xuất!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Ok, sign me out!",
+      confirmButtonText: "Đăng xuất!",
+      cancelButtonText: "Hủy",
     }).then(async (result) => {
       if (result.isConfirmed) {
         await signOut(auth);
-        Swal.fire("Sign out successfully", "success");
+        Swal.fire("Đăng xuất thành công", "success");
       }
     });
   };
-  
+
   return (
     <div className="header-info">
       <div className="users">
