@@ -42,7 +42,7 @@ const AdminPage = () => {
 
   return (
     <div className="container">
-      {userInfo.role === "admin" ? (
+      {userInfo && userInfo?.role === "admin" ? (
         <div className="admin">
           <div className="wrapper">
             <div className="dash-board">
