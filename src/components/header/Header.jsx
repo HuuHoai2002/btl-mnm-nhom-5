@@ -4,6 +4,7 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useLocation } from "react-router-dom";
 import "tippy.js/animations/scale.css";
+import { useAuth } from "../../contexts/auth";
 import { auth } from "../../firebase/firebase-config";
 import ArrowsDown from "../icon/ArrowsDown";
 import "./header.scss";
@@ -34,6 +35,7 @@ const headerContent = [
 
 const Header = () => {
   const [user] = useAuthState(auth);
+  const { userInfo } = useAuth();
   const { pathname } = useLocation();
 
   return (
@@ -55,6 +57,9 @@ const Header = () => {
                 className={
                   item.to === pathname ? "header-item-active" : "header-item"
                 }
+                style={{
+                  display: item.to === "/admin" && !userInfo ? "none" : "block",
+                }}
                 key={item.id}
               >
                 {item.title}

@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
-const FlagIcon = () => {
+const FlagIcon = ({ size = "24" }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
+      width={size}
+      height={size}
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -18,6 +18,6 @@ const FlagIcon = () => {
       />
     </svg>
   );
-}
+};
 
-export default FlagIcon
+export default FlagIcon;

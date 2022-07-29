@@ -5,6 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import Swal from "sweetalert2";
 import { auth, db } from "../../firebase/firebase-config";
 import DeleteIcon from "../icon/DeleteIcon";
+import FlagIcon from "../icon/FlagIcon";
 
 const Comment = ({ data, onClick }) => {
   const [user] = useAuthState(auth);
@@ -62,6 +63,7 @@ const Comment = ({ data, onClick }) => {
                       </div>
                     ) : (
                       <div className="item" onClick={handleSendReport}>
+                        <FlagIcon size="14"/>
                         Báo cáo
                       </div>
                     )}
