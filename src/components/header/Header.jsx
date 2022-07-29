@@ -58,7 +58,12 @@ const Header = () => {
                   item.to === pathname ? "header-item-active" : "header-item"
                 }
                 style={{
-                  display: item.to === "/admin" && !userInfo ? "none" : "block",
+                  display:
+                    item.to === "/admin" &&
+                    !userInfo &&
+                    userInfo?.role !== "admin"
+                      ? "none"
+                      : "block",
                 }}
                 key={item.id}
               >

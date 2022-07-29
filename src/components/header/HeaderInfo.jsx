@@ -22,7 +22,7 @@ const HeaderInfo = ({ user }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         await signOut(auth);
-        Swal.fire("Đăng xuất thành công", "success");
+        Swal.fire("Đăng xuất thành công", "", "success");
       }
     });
   };
