@@ -2,7 +2,7 @@ import React from "react";
 
 import { Route, Switch } from "react-router-dom";
 import ScrollToTop from "../components/scroll/ScrollToTop";
-
+import AdminPage from "../pages/admin/AdminPage";
 import Catalog from "../pages/Catalog";
 import Detail from "../pages/detail/Detail";
 import Home from "../pages/Home";
@@ -17,6 +17,8 @@ const Routes = () => {
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
+        <Route path="/admin" component={AdminPage} />
+
         <Route path="/:category/watch" component={Watch} />
         <Route path="/:category/search/:keyword" component={Catalog} />
         <Route path="/:category/:id" component={Detail} />

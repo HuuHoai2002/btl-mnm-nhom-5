@@ -1,6 +1,8 @@
 import {
   addDoc,
   collection,
+  deleteDoc,
+  doc,
   onSnapshot,
   query,
   where,
@@ -9,6 +11,7 @@ import React, { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 import { auth, db } from "../../firebase/firebase-config";
 import Comment from "./Comment";
 import CommentsInfo from "./CommentsInfo";
@@ -29,7 +32,10 @@ const Comments = ({ category, id }) => {
     );
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
-      const data = snapshot.docs.map((doc) => doc.data());
+      const data = snapshot.docs.map((doc) => ({
+        comment_id: doc.id,
+        ...doc.data(),
+      }));
       if (data) {
         setComments(data);
       }
@@ -55,11 +61,35 @@ const Comments = ({ category, id }) => {
         created_at: new Date(),
         author: auth.currentUser.displayName,
         author_avatar: auth.currentUser.photoURL,
+        author_id: auth.currentUser.uid,
       });
       setValue("");
     }
   };
 
+  const hanldeDeleteComments = async (id) => {
+    const colRef = doc(db, "comments", id);
+    Swal.fire({
+      title: "Bạn có chắc không?",
+      text: "Bình luận này sẽ bị xoá vĩnh viễn!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Xoá!",
+      cancelButtonText: "Hủy",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await deleteDoc(colRef);
+        Swal.fire(
+          "Xoá thành công!",
+          `Bạn đã xoá bình luận có id: ${id}`,
+          "success"
+        );
+      }
+    });
+  };
+  console.log(comments);
   return (
     <div className="container section">
       <h3 className="comments-title">Bình luận</h3>
@@ -87,7 +117,11 @@ const Comments = ({ category, id }) => {
           <div className="list-comments">
             {comments.length > 0 ? (
               comments.map((comment) => (
-                <Comment key={comment.created_at} data={comment} />
+                <Comment
+                  key={comment.id}
+                  data={comment}
+                  onClick={() => hanldeDeleteComments(comment.comment_id)}
+                />
               ))
             ) : (
               <div

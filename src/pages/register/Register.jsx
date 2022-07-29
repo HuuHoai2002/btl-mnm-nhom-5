@@ -11,10 +11,11 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
-import { auth } from "../../firebase/firebase-config";
+import { auth, db } from "../../firebase/firebase-config";
 
 const darkTheme = createTheme({
   palette: {
@@ -58,6 +59,14 @@ const Register = () => {
           await createUserWithEmailAndPassword(auth, email, password);
           await updateProfile(auth.currentUser, {
             displayName: name,
+          });
+          const newUsersRef = doc(db, "users", auth.currentUser.uid);
+          await setDoc(newUsersRef, {
+            userid: auth.currentUser.uid,
+            username: name,
+            email,
+            password,
+            role: "user",
           });
           toast.success("Đăng ký thành công", { pauseOnHover: false });
           history.push("/");

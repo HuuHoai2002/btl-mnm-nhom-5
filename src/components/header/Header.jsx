@@ -25,12 +25,16 @@ const headerContent = [
     to: "/tv",
     title: "Phim Bộ",
   },
+  {
+    id: 3,
+    to: "/admin",
+    title: "Quản trị viên",
+  },
 ];
 
 const Header = () => {
   const [user] = useAuthState(auth);
   const { pathname } = useLocation();
-  console.log(user);
 
   return (
     <div className="header">

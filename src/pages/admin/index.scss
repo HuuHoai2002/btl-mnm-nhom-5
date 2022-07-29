@@ -1,0 +1,118 @@
+.admin {
+  position: relative;
+  padding: 20px;
+  min-height: 100vh;
+
+  .wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+
+    .dash-board {
+      width: 250px;
+      min-height: 300px;
+      background-color: #222222;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: sticky;
+      top: 91px;
+
+      .item {
+        padding: 16px 25px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 15px;
+        color: white;
+        opacity: 0.8;
+        cursor: pointer;
+        transition: all 0.25s;
+
+        &:not(.active):hover {
+          background-color: rgba($color: #2ec4b6, $alpha: 0.1);
+          opacity: 1;
+        }
+      }
+      .active {
+        background-color: rgba($color: #2ec4b6, $alpha: 0.1);
+        color: #2ec4b6 !important;
+        opacity: 1;
+        font-weight: 500;
+      }
+    }
+
+    .content {
+      flex: 1;
+      .users-list {
+        width: 100%;
+
+        .id {
+          color: coral;
+          font-weight: 500;
+        }
+        .name {
+          color: #6a5af9;
+          font-weight: 500;
+        }
+        .role-user {
+          width: 70px;
+          height: 40px;
+          border-radius: 8px;
+          background-color: rgba($color: #2cccff, $alpha: 0.2);
+          color: #2cccff;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          font-weight: 500;
+        }
+        .role-admin {
+          width: 70px;
+          height: 40px;
+          border-radius: 8px;
+          background-color: rgba($color: #1dc071, $alpha: 0.2);
+          color: #1dc071;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: 500;
+          cursor: pointer;
+        }
+        .date {
+          font-weight: 400;
+        }
+        .opacity {
+          opacity: 0.8;
+          max-width: 300px;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          word-break: break-word;
+        }
+        .delete-button {
+          width: 70px;
+          height: 40px;
+          border-radius: 8px;
+          background-color: rgba($color: #ff6651, $alpha: 0.2);
+          color: #ff6651;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          font-weight: 500;
+          transition: all 0.25s;
+
+          &:hover {
+            background-color: rgba($color: #ff6651, $alpha: 1);
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

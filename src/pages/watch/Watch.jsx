@@ -43,7 +43,7 @@ const Watch = () => {
         <div className="watch-frame">
           <iframe
             title="movie-frame"
-            src={frame_url}
+            // src={frame_url}
             width="100%"
             height="100%"
             allowFullScreen="allowfullscreen"
