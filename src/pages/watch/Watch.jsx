@@ -43,7 +43,7 @@ const Watch = () => {
         <div className="watch-frame">
           <iframe
             title="movie-frame"
-            // src={frame_url}
+            src={frame_url}
             width="100%"
             height="100%"
             allowFullScreen="allowfullscreen"
@@ -74,7 +74,7 @@ const Watch = () => {
       </div>
       <div className="section" style={{ marginTop: "30px" }}>
         <div className="section__header">
-          <h2>Similar</h2>
+          <h2>Tương Tự</h2>
         </div>
         <MovieList category={category} type="similar" id={id} />
       </div>
