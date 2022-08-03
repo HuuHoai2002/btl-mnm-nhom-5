@@ -31,7 +31,7 @@ const Comment = ({ data, onClick }) => {
         });
         Swal.fire(
           "Thành Công!",
-          `Bạn đã báo cáo thành công bình luận này`,
+          `Đã gửi báo cáo đến Quản Trị Viên`,
           "success"
         );
       }
