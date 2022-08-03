@@ -1,50 +1,19 @@
-import {
-  addDoc,
-  collection,
-  deleteDoc,
-  doc,
-  onSnapshot,
-  query,
-  where,
-} from "firebase/firestore";
-import React, { useEffect } from "react";
+import { addDoc, collection, deleteDoc, doc } from "firebase/firestore";
+import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import { useComments } from "../../contexts/comments";
 import { auth, db } from "../../firebase/firebase-config";
 import Comment from "./Comment";
 import CommentsInfo from "./CommentsInfo";
 import "./index.scss";
 
 const Comments = ({ category, id }) => {
-  const [comments, setComments] = React.useState([]);
   const [user] = useAuthState(auth);
   const [value, setValue] = React.useState("");
-
-  // get comments
-  useEffect(() => {
-    const commentsRef = collection(db, "comments");
-    const q = query(
-      commentsRef,
-      where("movie_type", "==", category),
-      where("movie_id", "==", id)
-    );
-
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const data = snapshot.docs.map((doc) => ({
-        comment_id: doc.id,
-        ...doc.data(),
-      }));
-      if (data) {
-        setComments(data);
-      }
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, [category, id]);
+  const { comments } = useComments();
 
   const handleSendComments = async () => {
     if (value.trim() === "") {
@@ -89,7 +58,7 @@ const Comments = ({ category, id }) => {
       }
     });
   };
-  console.log(comments);
+
   return (
     <div className="container section">
       <h3 className="comments-title">Bình luận</h3>
@@ -118,7 +87,7 @@ const Comments = ({ category, id }) => {
             {comments.length > 0 ? (
               comments.map((comment) => (
                 <Comment
-                  key={comment.id}
+                  key={comment.comment_id}
                   data={comment}
                   onClick={() => hanldeDeleteComments(comment.comment_id)}
                 />

@@ -26,11 +26,6 @@ const headerContent = [
     to: "/tv",
     title: "Phim Bộ",
   },
-  {
-    id: 3,
-    to: "/admin",
-    title: "Quản trị viên",
-  },
 ];
 
 const Header = () => {
@@ -57,19 +52,21 @@ const Header = () => {
                 className={
                   item.to === pathname ? "header-item-active" : "header-item"
                 }
-                style={{
-                  display:
-                    item.to === "/admin" &&
-                    !userInfo &&
-                    userInfo?.role !== "admin"
-                      ? "none"
-                      : "block",
-                }}
                 key={item.id}
               >
                 {item.title}
               </Link>
             ))}
+            {userInfo?.role === "admin" && (
+              <Link
+                to="/admin"
+                className={
+                  pathname === '/admin' ?  "header-item-active" : "header-item"
+                }
+              >
+                Quản trị viên
+              </Link>
+            )}
           </div>
         </div>
         {user ? (

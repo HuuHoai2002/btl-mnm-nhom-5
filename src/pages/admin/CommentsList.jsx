@@ -8,7 +8,14 @@ import {
   TableRow,
   ThemeProvider,
 } from "@mui/material";
-import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  onSnapshot,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -25,7 +32,8 @@ const CommentsList = () => {
 
   useEffect(() => {
     const colRef = collection(db, "comments");
-    onSnapshot(colRef, (snapShot) => {
+    const q = query(colRef, orderBy("created_at", "desc"));
+    onSnapshot(q, (snapShot) => {
       let results = [];
       snapShot.forEach((doc) => {
         results.push({

@@ -6,6 +6,7 @@ import Comments from "../../components/comments/Comments";
 import Episodes from "../../components/episode/Episodes";
 import MovieList from "../../components/movie-list/MovieList";
 import MovieRecomments from "../../components/movie-recomments/MovieRecomments";
+import { CommentsProvider } from "../../contexts/comments";
 import useUrlSearchParams from "../../hooks/useUrlSearchParams";
 import "./watch.scss";
 
@@ -17,6 +18,7 @@ const Watch = () => {
   const [movie, setMovie] = React.useState(null);
 
   let frame_url = apiConfig.frameUrl(category, id);
+
   if (category !== "movie") {
     frame_url = apiConfig.frameUrl(category, id, episode);
   }
@@ -69,9 +71,9 @@ const Watch = () => {
           </div>
         )}
       </div>
-      <div>
+      <CommentsProvider category={category} id={id}>
         <Comments category={category} id={id} />
-      </div>
+      </CommentsProvider>
       <div className="section" style={{ marginTop: "30px" }}>
         <div className="section__header">
           <h2>Tương Tự</h2>

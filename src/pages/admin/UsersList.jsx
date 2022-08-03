@@ -6,7 +6,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  ThemeProvider,
+  ThemeProvider
 } from "@mui/material";
 import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
