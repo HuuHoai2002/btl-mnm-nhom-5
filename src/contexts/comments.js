@@ -20,7 +20,7 @@ function CommentsProvider(props) {
     });
   }, []);
 
-  const comments = _comments.filter(
+  const comments = _comments.filter(  
     (comment) =>
       comment.movie_id === props?.id && comment.movie_type === props?.category
   );
