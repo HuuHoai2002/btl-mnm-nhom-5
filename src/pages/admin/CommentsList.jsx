@@ -94,8 +94,8 @@ const CommentsList = () => {
                       <Link
                         to={`${
                           comment.movie_type.includes("movie")
-                            ? `/movie/watch?id=${comment.movie_id}`
-                            : `/tv/watch?id=${comment.movie_id}&episode=1`
+                            ? `/movie/watch?id=${comment.movie_id}&scroll=comments`
+                            : `/tv/watch?id=${comment.movie_id}&episode=1&scroll=comments`
                         }`}
                       >
                         {comment.movie_id}

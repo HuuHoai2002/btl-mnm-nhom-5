@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import apiConfig from "../../api/apiConfig";
 import tmdbApi from "../../api/tmdbApi";
@@ -14,6 +14,8 @@ const Watch = () => {
   const { category } = useParams();
   const id = useUrlSearchParams("id");
   const episode = useUrlSearchParams("episode");
+  const scroll = useUrlSearchParams("scroll");
+  const refComments = useRef(null);
 
   const [movie, setMovie] = React.useState(null);
 
@@ -24,6 +26,10 @@ const Watch = () => {
   }
 
   useEffect(() => {
+    if (scroll) {
+      const element = refComments.current.getBoundingClientRect();
+      window.scrollTo(0, element.top - 70);
+    }
     const getDetail = async () => {
       const response = await tmdbApi.detail(category, id, { params: {} });
       setMovie(response);
@@ -37,7 +43,7 @@ const Watch = () => {
       }
     };
     getDetail();
-  }, [category, episode, id]);
+  }, [category, episode, id, scroll]);
 
   return (
     <div className="watch container">
@@ -72,7 +78,7 @@ const Watch = () => {
         )}
       </div>
       <CommentsProvider category={category} id={id}>
-        <Comments category={category} id={id} />
+        <Comments category={category} id={id} ref={refComments} />
       </CommentsProvider>
       <div className="section" style={{ marginTop: "30px" }}>
         <div className="section__header">

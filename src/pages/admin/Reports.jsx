@@ -6,7 +6,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  ThemeProvider
+  ThemeProvider,
 } from "@mui/material";
 import {
   collection,
@@ -14,7 +14,7 @@ import {
   doc,
   onSnapshot,
   orderBy,
-  query
+  query,
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -98,8 +98,8 @@ const Reports = () => {
                       <Link
                         to={`${
                           comment.movie_type.includes("movie")
-                            ? `/movie/watch?id=${comment.movie_id}`
-                            : `/tv/watch?id=${comment.movie_id}&episode=1`
+                            ? `/movie/watch?id=${comment.movie_id}&scroll=comments`
+                            : `/tv/watch?id=${comment.movie_id}&episode=1&scroll=comments`
                         }`}
                       >
                         {comment.movie_id}

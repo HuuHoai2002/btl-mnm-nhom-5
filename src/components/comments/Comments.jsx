@@ -1,5 +1,5 @@
 import { addDoc, collection, deleteDoc, doc } from "firebase/firestore";
-import React from "react";
+import React, { forwardRef } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -10,7 +10,7 @@ import Comment from "./Comment";
 import CommentsInfo from "./CommentsInfo";
 import "./index.scss";
 
-const Comments = ({ category, id }) => {
+const Comments = forwardRef(({ category, id }, ref) => {
   const [user] = useAuthState(auth);
   const [value, setValue] = React.useState("");
   const { comments } = useComments();
@@ -60,7 +60,7 @@ const Comments = ({ category, id }) => {
   };
 
   return (
-    <div className="container section">
+    <div className="container section" ref={ref}>
       <h3 className="comments-title">Bình luận</h3>
       <div className="comments">
         <div className="comments-wrapper">
@@ -106,6 +106,6 @@ const Comments = ({ category, id }) => {
       </div>
     </div>
   );
-};
+});
 
 export default Comments;
