@@ -30,7 +30,7 @@ const Watch = () => {
       const element = refComments.current.getBoundingClientRect();
       
       window.scroll({
-        top: element - 70,
+        top: element.top - 70,
         behavior: 'smooth'
       });
     }
