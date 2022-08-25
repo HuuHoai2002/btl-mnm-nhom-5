@@ -28,7 +28,11 @@ const Watch = () => {
   useEffect(() => {
     if (scroll) {
       const element = refComments.current.getBoundingClientRect();
-      window.scrollTo(0, element.top - 70);
+      
+      window.scroll({
+        top: element - 70,
+        behavior: 'smooth'
+      });
     }
     const getDetail = async () => {
       const response = await tmdbApi.detail(category, id, { params: {} });
